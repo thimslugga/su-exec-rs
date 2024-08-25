@@ -1,0 +1,33 @@
+[package]
+name = "su-exec-rs"
+version = "0.1.0"
+description = "switch user and group id and exec"
+authors = ["Adam Kaminski <adam@adamkaminski.com>"]
+repository = "https://github.com/thimslab/su-exec-rs"
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/thimslab/su-exec-rs"
+documentation = "https://github.com/thimslab/su-exec-rs"
+categories = ["tools", "security", "system", "linux", "containers"]
+keywords = ["linux", "docker", "kubernetes", "containers", "security"]
+edition = "2021"
+rust-version = "1.80"
+
+[[bin]]
+name = "su-exec-rs"
+path = "src/main.rs"
+test = false
+doc = false
+
+#[features]
+#default = ["idiomatic"]
+#idiomatic = []
+#low_overhead = []
+
+[dependencies]
+libc = "0.2"
+users = "0.11.0"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+libc = "0.2"
+users = "0.11"

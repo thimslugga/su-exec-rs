@@ -1,0 +1,132 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# defaults
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 2
+max_line_length = 120
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Rust
+# https://github.com/rust-lang/rust/blob/master/src/doc/style/style/whitespace.md
+[*.{rs}]
+indent_size = 4
+max_line_length = 100
+indent_style = space
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+[tests/**/*.rs]
+charset = utf-8
+end_of_line = unset
+indent_size = unset
+indent_style = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
+
+# Golang
+# https://golang.org/cmd/gofmt/
+[{go.mod,*.go}]
+indent_style = tab
+indent_size = 4
+
+# Python
+# https://www.python.org/dev/peps/pep-0008/#code-lay-out
+[*.py]
+indent_size = 4
+indent_style = space
+
+# Ruby
+# http://www.caliban.org/ruby/rubyguide.shtml#indentation
+[*.{rb}]
+indent_size = 2
+indent_style = space
+
+# YAML
+# http://yaml.org/spec/1.2/2009-07-21/spec.html#id2576668
+[*.{yaml,yml}]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+# JSON
+[*.{json}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+# TOML
+# https://github.com/toml-lang/toml/tree/master/examples
+[*.{toml}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+# GNU make
+# https://www.gnu.org/software/make/manual/html_node/Recipe-Syntax.html
+[Makefile]
+indent_style = tab
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+# Just
+# https://github.com/casey/just/master/justfile
+[{justfile,Justfile,.justfile}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+# documentation, utils
+[*.{md,mdx,diff}]
+# double whitespace at end of line
+# denotes a line break in Markdown
+indent_style = space
+max_line_length = 80
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+# Git
+[.git*]
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+# Shell scripts
+# https://google.github.io/styleguide/shell.xml#Indentation
+[*.{bash,sh,zsh}]
+charset = utf-8
+max_line_length = 110
+end_of_line = lf
+indent_style = space
+indent_size = 2
+tab_width = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+shell_variant = bash
+
+# BATS: https://github.com/bats-core/bats-core
+# https://github.com/bats-core/bats-core/master/.editorconfig
+[*.bats]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
+
+# windows shell scripts
+[*.{cmd,bat,ps1}]
+end_of_line = crlf

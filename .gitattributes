@@ -1,0 +1,5 @@
+#* text eol=lf
+*.rs text eol=lf
+*.lock text eol=lf
+*.txt text eol=lf
+*.toml text eol=lf
