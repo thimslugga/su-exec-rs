@@ -27,7 +27,7 @@ su-exec-rs ubuntu:1000 /usr/sbin/caddy -conf /etc/Caddyfile
 Example usage:
 
 ```shellsession
-time docker run --rm -it ubuntu:latest su ubuntu -c 'ps aux'
+$ time docker run --rm -it ubuntu:latest su ubuntu -c 'ps aux'
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1 23.5  0.0   4332  2816 pts/0    Ss+  22:03   0:00 su ubuntu -c ps aux
 ubuntu         7  0.0  0.0   8280  4224 ?        Rs   22:03   0:00 ps aux
@@ -38,9 +38,7 @@ sys 0m0.025s
 ```
 
 ```shellsession
-$ time docker run --rm -it \
-    -v $PWD/su-exec-rs:/sbin/su-exec-rs:ro \
-    ubuntu:latest su-exec-rs ubuntu ps aux
+$ time docker run --rm -it -v $PWD/su-exec-rs:/sbin/su-exec-rs:ro ubuntu:latest su-exec-rs ubuntu ps aux
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 ubuntu         1 23.5  0.0   7888  3712 pts/0    Rs+  22:05   0:00 ps aux
 
