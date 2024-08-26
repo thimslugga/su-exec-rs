@@ -40,6 +40,10 @@ checkstyle.xml
 *.so.*
 *.dylib
 
+# will have compiled files and executables
+su-exec-rs
+pewpew
+
 # Executables
 *.exe
 *.out
@@ -51,8 +55,6 @@ checkstyle.xml
 # Debug files
 *.dSYM/
 
-# will have compiled files and executables
-su-exec-rs
 
 # build metadata
 /target/

@@ -49,6 +49,7 @@ system-info:
 build:
   cargo build --release
   test -f target/release/su-exec-rs && cp target/release/su-exec-rs bin/su-exec-rs
+  test -f bin/su-exec-rs && strip bin/su-exec-rs
 
 # Run the program
 run *args:
