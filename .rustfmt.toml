@@ -1,0 +1,42 @@
+# This file defines the Rust style for automatic reformatting.
+# See also https://rust-lang.github.io/rustfmt
+
+# Rustfmt configuration
+# https://github.com/rust-lang/rustfmt/blob/master/Configurations.md
+unstable_features = false
+
+# Rust language edition to be used by the parser.
+edition = "2021"
+
+# Version of the formatting rules to use.
+#version = "Two"
+
+# Line endings will be converted to \n.
+newline_style = "Unix"
+
+indent_style = "Block"
+max_width = 100
+
+# Format strings
+# https://github.com/rust-lang/rustfmt/blob/master/Configurations.md#formatting-strings
+format_strings = true
+
+reorder_imports = false
+group_imports = "StdExternalCrate"
+imports_granularity = "Crate"
+#imports_layout = "Vertical"
+
+# Format comments.
+wrap_comments = true
+format_code_in_doc_comments = true
+comment_width = 100
+
+# The "Default" setting has a heuristic which splits lines too aggresively.
+# We are willing to revisit this setting in future versions of rustfmt.
+# Bugs:
+# * https://github.com/rust-lang/rustfmt/issues/3119
+# * https://github.com/rust-lang/rustfmt/issues/3120
+#use_small_heuristics = "Max"
+
+# Third party code is formatted upstream.
+ignore = ["third_party/rust/**/crate"]

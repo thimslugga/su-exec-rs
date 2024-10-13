@@ -1,0 +1,16 @@
+.git
+.github
+.cache
+.vscode
+.devcontainer
+docs
+tests
+docker
+scripts
+CONTRIBUTING
+MAINTAINERS
+*.log
+*.md
+!README.md
+!LICENSE
+!LICENSE.txt

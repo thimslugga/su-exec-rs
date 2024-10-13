@@ -1,132 +1,348 @@
-# EditorConfig helps developers define and maintain consistent
-# coding styles between different editors and IDEs
-# https://EditorConfig.org
+# EditorConfig is awesome: https://EditorConfig.org
 
-# top-most EditorConfig file
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs.
+
+# * any string of characters, except path separators (/)
+# ** any string of characters
+# ? any single character, except path separators (/)
+# [seq] any single character in seq
+# [!seq] any single character not in seq
+# {s1,s2,s3} any of the strings given (separated by commas, can be nested) (But {s1} only matches {s1} literally.)
+# {num1..num2} any integer numbers between num1 and num2, can be either positive or negative
+
+#[{.,}*.{js{,*},y{a,}ml}]
+#indent_style = space
+#indent_size = 2
+
+# References:
+# - https://google.github.io/styleguide/
+
+# This file is the top-most EditorConfig file
 root = true
 
-# defaults
-# Unix-style newlines with a newline ending every file
+# https://spec.editorconfig.org/
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
 [*]
-end_of_line = lf
+# UTF-8 character set
 charset = utf-8
+# Use for spell checking
+spelling_language = en-US
+# Unix-style newlines
+end_of_line = lf
+# Soft tabs
 indent_style = space
+# Two-space indentation
 indent_size = 2
-max_line_length = 120
+# Trim trailing whitespace
 trim_trailing_whitespace = true
+# Newline ending every file
 insert_final_newline = true
 
-# Rust
-# https://github.com/rust-lang/rust/blob/master/src/doc/style/style/whitespace.md
-[*.{rs}]
-indent_size = 4
-max_line_length = 100
-indent_style = space
-insert_final_newline = false
-trim_trailing_whitespace = true
+# Plaintext files
+[*.{txt}]
+indent_style = unset
+indent_size = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
 
-[tests/**/*.rs]
+# LICENSE files
+[{LICENSE,LICENSE.txt}]
+indent_style = unset
+indent_size = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
+
+# Git
+[.git*]
+indent_style = tab
+indent_size = tab
+trim_trailing_whitespace = unset
+insert_final_newline = unset
+
+# Shell Scripts
+# https://google.github.io/styleguide/shellguide.html#s5-formatting
+[*.{sh,bash,ksh,zsh,fish}]
 charset = utf-8
-end_of_line = unset
+end_of_line = lf
+# Exception for use of tabs is for the body of tab-indented heredocs.
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+insert_final_newline = false
+max_line_length = 80
+#shell_variant = bash
+
+# PowerShell scripts
+[*.{ps1}]
+end_of_line = crlf
+
+# Batch files
+[*.{cmd,bat}]
+end_of_line = crlf
+
+# Python
+# https://www.python.org/dev/peps/pep-0008/#code-lay-out
+[*.{py}]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+max-line-length = 120
+docstring_fill_column = 119 # Docstring line wrapping
+
+# Don't touch python files in virtual environments
+[.venvs/**.py]
 indent_size = unset
 indent_style = unset
 trim_trailing_whitespace = unset
 insert_final_newline = unset
-
-# Golang
-# https://golang.org/cmd/gofmt/
-[{go.mod,*.go}]
-indent_style = tab
-indent_size = 4
-
-# Python
-# https://www.python.org/dev/peps/pep-0008/#code-lay-out
-[*.py]
-indent_size = 4
-indent_style = space
+end_of_line = unset
 
 # Ruby
 # http://www.caliban.org/ruby/rubyguide.shtml#indentation
 [*.{rb}]
+indent_style = space
 indent_size = 2
+
+# PHP
+[*.{php}]
+indent_style = space
+indent_size = 4
+
+# Perl
+[*.{pl,pm}]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# JavaScript
+# https://prettier.io
+[*.{js,jsx,coffee}]
+indent_style = space
+indent_size = 2
+quote_type = single
+
+[node_modules/**.js]
+indent_size = unset
+indent_style = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
+end_of_line = unset
+
+# TypeScript
+[*.{ts,tsx}]
+indent_style = space
+indent_size = 2
+
+# Vue.js
+# https://eslint.vuejs.org/rules/html-indent.html
+# https://eslint.vuejs.org/rules/script-indent.html
+[*.vue]
+indent_style = space
+indent_size = 2
+
+# Dart
+[*.dart]
+indent_style = space
+indent_size = 2
+
+# Bun
+# https://bun.sh/docs/bunrc
+[*.bun]
+indent_style = space
+indent_size = 2
+
+# C
+# https://en.wikipedia.org/wiki/Indentation_style#Linux_kernel
+[*.{c,h}]
+charset = utf-8
+end_of_line = lf
+indent_style = tab
+indent_size = 8
+trim_trailing_whitespace = true
+insert_final_newline = true
+# Max line length = 100, pre-2020 limit was 80
+max_line_length = 100
+
+# C++
+# https://google.github.io/styleguide/cppguide.html#Formatting
+[*.{cpp,hpp}]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 80
+
+# Golang
+# https://go.dev/doc/effective_go#formatting
+# https://go.dev/src/cmd/gofmt/doc.go
+# gofmt -w .
+[{*.go,go.mod,go.sum}]
+charset = utf-8
+end_of_line = lf
+# Use tabs for indentation, which gofmt does by default.
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Bazel
+# https://github.com/bazelbuild/buildtools/blob/master/BUILD.bazel
+[*.{bazel,bzl}]
+indent_size = 4
 indent_style = space
 
-# YAML
-# http://yaml.org/spec/1.2/2009-07-21/spec.html#id2576668
-[*.{yaml,yml}]
-indent_size = 2
+# Rust
+# https://github.com/rust-lang/rust/blob/master/src/doc/style/style/whitespace.md
+# https://rust-lang.github.io/rustfmt/?version=master&search=
+[*.{rs}]
 indent_style = space
-trim_trailing_whitespace = true
+indent_size = 4
 insert_final_newline = false
+trim_trailing_whitespace = true
+max_line_length = 100
 
-# JSON
-[*.{json}]
-indent_style = space
-indent_size = 2
-trim_trailing_whitespace = true
-insert_final_newline = false
+# Rust test files
+[tests/**/*.rs]
+charset = utf-8
+indent_size = unset
+indent_style = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
+end_of_line = unset
 
 # TOML
 # https://github.com/toml-lang/toml/tree/master/examples
 [*.{toml}]
 indent_style = space
-indent_size = 2
+indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = false
+max_line_length = 80
 
-# GNU make
+# Java
+# https://google.github.io/styleguide/javaguide.html#s4.2-block-indentation
+[*.{java}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+# GNU Make
+# https://www.gnu.org/software/gnulib/manual/html_node/Indent-with-spaces-not-TABs.html
 # https://www.gnu.org/software/make/manual/html_node/Recipe-Syntax.html
-[Makefile]
-indent_style = tab
+[{{M,m}akefile,*.mk}]
+indent_style = space
+indent_size = 4
 trim_trailing_whitespace = false
 insert_final_newline = false
 
 # Just
 # https://github.com/casey/just/master/justfile
-[{justfile,Justfile,.justfile}]
+[{{j,J}ustfile,.justfile,.justfile.user}]
 indent_style = space
-indent_size = 2
-trim_trailing_whitespace = false
-insert_final_newline = false
-
-# documentation, utils
-[*.{md,mdx,diff}]
-# double whitespace at end of line
-# denotes a line break in Markdown
-indent_style = space
-max_line_length = 80
-trim_trailing_whitespace = false
-insert_final_newline = false
-
-# Git
-[.git*]
-indent_style = tab
 indent_size = 4
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+# Diff and patch files
+#[*.{diff,patch}]
+#trim_trailing_whitespace = false
+#insert_final_newline = false
+
+# YAML
+# http://yaml.org/spec/1.2/2009-07-21/spec.html#id2576668
+# https://www.redhat.com/sysadmin/yaml-tips
+[*.{y{a,}ml}]
+indent_style = space
+indent_size = 2
 trim_trailing_whitespace = true
 insert_final_newline = false
 
-# Shell scripts
-# https://google.github.io/styleguide/shell.xml#Indentation
-[*.{bash,sh,zsh}]
-charset = utf-8
-max_line_length = 110
-end_of_line = lf
+# Compose files
+[{docker-compose.y{a,}ml,compose.y{a,}ml,*.compose.y{a,}ml}]
 indent_style = space
-indent_size = 2
-tab_width = 2
-insert_final_newline = true
-trim_trailing_whitespace = true
-shell_variant = bash
+indent_size = 4
 
-# BATS: https://github.com/bats-core/bats-core
-# https://github.com/bats-core/bats-core/master/.editorconfig
-[*.bats]
+# Dockerfiles
+[{{Docker,Container}file,*.{Docker,Container}file}]
+indent_style = space
+indent_size = 4
+
+# JSON
+[*.{json,json{c,5}}]
 indent_style = space
 indent_size = 2
+insert_final_newline = false
+
+# XML
+[*.{xml}]
+indent_style = space
+indent_size = 2
+insert_final_newline = ignore
+
+# INI configuration files
+[*.{ini,cfg}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false
 insert_final_newline = true
+
+# Terraform files
+[{*.tf,*.tfvars,*.tf.json}]
+indent_style = space
+indent_size = 2
+
+# Packer files
+[{*.pkr.hcl,*.pkr.hcl.json}]
+indent_style = space
+indent_size = 2
+
+# CSV, TSV etc files
+[*.{csv,tsv}]
+indent_style = space
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = false
+insert_final_newline = true
+
+# GraphQL
+# https://graphql.org/learn/
+[*.{graphql}]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.{md,mdx,markdown,mkdn}]
+indent_style = space
+#indent_size = 2
+trim_trailing_whitespace = false
 max_line_length = 80
+
+# HTML
+# https://google.github.io/styleguide/htmlcssguide.xml#General_Formatting_Rules
+[*.{htm,html}]
+indent_style = space
+indent_size = 2
 trim_trailing_whitespace = true
 
-# windows shell scripts
-[*.{cmd,bat,ps1}]
-end_of_line = crlf
+# CSS
+# https://google.github.io/styleguide/htmlcssguide.xml#General_Formatting_Rules
+# http://cssguidelin.es/#syntax-and-formatting
+[*.{css}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+# Less
+# https://github.com/less/less-docs#less-standards
+[*.{less}]
+indent_style = space
+indent_size = 2

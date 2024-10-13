@@ -1,0 +1,9 @@
+ignore:
+  - "**/*.lock"
+  - "**/*.toml"
+  - "**/*.md"
+  - "utils"
+  - "**/tests"
+  - "LICENSE"
+  - ".github"
+  - ".gitignore"

@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
+This section is used to indicate the versions of the project, which are
 currently being supported with security updates.
 
 | Version | Supported          |
@@ -11,4 +11,4 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Open an issue.
+Just open a GitHub issue.

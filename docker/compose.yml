@@ -1,0 +1,42 @@
+# compose.yml
+---
+services:
+    ubuntu:
+        image: "docker.io/ubuntu:latest"
+        build:
+            context: .
+            dockerfile: "./ubuntu.Dockerfile"
+        volumes:
+            - ..:/src
+        working_dir: /src
+        command: bash -c "cargo build && cargo run -- nobody"
+
+    fedora:
+        image: docker.io/fedora:latest
+        build:
+            context: .
+            dockerfile: "./fedora.Dockerfile"
+        volumes:
+            - ..:/src
+        working_dir: /src
+        command: bash -c "cargo build && cargo run -- nobody"
+
+    ubi9:
+        image: "docker.io/redhat/ubi9:latest"
+        build:
+            context: .
+            dockerfile: "./ubi9.Dockerfile"
+        volumes:
+            - ..:/src
+        working_dir: /src
+        command: bash -c "cargo build && cargo run -- nobody"
+
+    alpine:
+        image: docker.io/alpine:latest
+        build:
+            context: .
+            dockerfile: "./alpine.Dockerfile"
+        volumes:
+            - ..:/src
+        working_dir: /src
+        command: bash -c "cargo build && cargo run -- nobody"

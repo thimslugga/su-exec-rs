@@ -39,34 +39,40 @@ int main(int argc, char *argv[])
 	cmdargv = &argv[2];
 
 	struct passwd *pw = NULL;
-	if (user[0] != '\0') {
+	if (user[0] != '\0')
+	{
 		uid_t nuid = strtol(user, &end, 10);
 		if (*end == '\0')
 			uid = nuid;
-		else {
+		else
+		{
 			pw = getpwnam(user);
 			if (pw == NULL)
 				err(1, "getpwnam(%s)", user);
 		}
 	}
-	if (pw == NULL) {
+	if (pw == NULL)
+	{
 		pw = getpwuid(uid);
 	}
-	if (pw != NULL) {
+	if (pw != NULL)
+	{
 		uid = pw->pw_uid;
 		gid = pw->pw_gid;
 	}
 
 	setenv("HOME", pw != NULL ? pw->pw_dir : "/", 1);
 
-	if (group && group[0] != '\0') {
+	if (group && group[0] != '\0')
+	{
 		/* group was specified, ignore grouplist for setgroups later */
 		pw = NULL;
 
 		gid_t ngid = strtol(group, &end, 10);
 		if (*end == '\0')
 			gid = ngid;
-		else {
+		else
+		{
 			struct group *gr = getgrnam(group);
 			if (gr == NULL)
 				err(1, "getgrnam(%s)", group);
@@ -74,17 +80,22 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if (pw == NULL) {
+	if (pw == NULL)
+	{
 		if (setgroups(1, &gid) < 0)
 			err(1, "setgroups(%i)", gid);
-	} else {
+	}
+	else
+	{
 		int ngroups = 0;
 		gid_t *glist = NULL;
 
-		while (1) {
+		while (1)
+		{
 			int r = getgrouplist(pw->pw_name, gid, glist, &ngroups);
 
-			if (r >= 0) {
+			if (r >= 0)
+			{
 				if (setgroups(ngroups, glist) < 0)
 					err(1, "setgroups");
 				break;
